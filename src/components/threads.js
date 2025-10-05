@@ -97,7 +97,7 @@ export default function Threads() {
     window.addEventListener('resize', onResize);
 
     const onScroll = () => {
-      scrollPos = Math.min(window.scrollY * 0.5, canvas.height / 2 - 30);
+      scrollPos = window.scrollY * 0.5;
       canvas.style.transform = `translateY(${-scrollPos}px)`;
     };
 

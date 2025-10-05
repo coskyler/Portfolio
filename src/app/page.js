@@ -4,7 +4,7 @@ import ProjectCard from "@/components/projectcard";
 import Threads from "@/components/threads";
 import LogoLoop from "@/components/logoloop";
 import Image from "next/image";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub, AiOutlineMenu } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDocker  } from "react-icons/si";
@@ -36,30 +36,54 @@ export default function Page() {
   const [navHidden, setNavHidden] = useState(false);
   const lastY = useRef(0)
 
+  const jumping = useRef(false);
+
+  const [navExpanded, setNavExpanded] = useState(false);
+
   const threadsMemo = useMemo(() => <Threads/>, []);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      setNavHidden(y > lastY.current && y > 50);
+
+      if(jumping.current) {
+        jumping.current = false;
+      } else {
+        setNavHidden(y > lastY.current && y > 50);
+        setNavExpanded(false);
+      }
+
       lastY.current = y;
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const jump = () => {
+    jumping.current = true;
+    setNavExpanded(false);
+  }
+
   return (
     <>
       <header 
         className={`fixed top-0 left-0 w-full z-50 flex justify-center bg-gradient-to-b from-black via-black/90 to-transparent md:px-[10%] transition-transform duration-500 ${navHidden ? "-translate-y-full" : "translate-y-0"}`}
       >
-        <nav className="w-full max-w-200 flex justify-center gap-3 px-6 md:rounded-full bg-black border border-neutral-800 md:my-4 items-center overflow-hidden">
-          <a href="#home" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Home</a>
-          <a href="#about" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">About</a>
-          <a href="#projects" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Projects</a>
-          <a href="#contact" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Contact</a>
+        <nav className="w-full max-w-200 flex justify-center gap-2 px-6 md:rounded-full bg-black border-b md:border border-neutral-800 md:my-4 items-center overflow-hidden">
+          <button 
+            className='cursor-pointer hover:bg-neutral-200 hover:text-black py-2.5 mb-auto items-center flex px-1 md:hidden'
+            onClick={() => setNavExpanded(!navExpanded)}
+          >
+            <AiOutlineMenu className={`w-7 h-7 transition-transform duration-300 ${navExpanded ? "rotate-90" : "rotate-0"}`} />
+          </button>
+          <div className={`flex md:gap-3 transition-[max-height] duration-500 overflow-hidden flex-col md:flex-row mb-auto ${navExpanded ? "max-h-64" : "max-h-0 md:max-h-none"}`}>
+            <a href="#home" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Home</a>
+            <a href="#about" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">About</a>
+            <a href="#projects" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Projects</a>
+            <a href="#contact" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Contact</a>
+          </div>
           <a 
-            className='ml-auto hover:bg-neutral-200 hover:text-black transition h-full items-center flex px-1'
+            className='ml-auto hover:bg-neutral-200 hover:text-black transition py-2.5 mb-auto items-center flex px-1'
             href="https://github.com/coskyler"
             target="_blank"
             rel="noopener noreferrer"
@@ -67,7 +91,7 @@ export default function Page() {
             <AiFillGithub className="w-7 h-7"/>
           </a>
           <a 
-          className='hover:bg-neutral-200 hover:text-black transition h-full items-center flex px-1'
+          className='hover:bg-neutral-200 hover:text-black transition py-2.5 mb-auto items-center flex px-1'
             href="https://www.linkedin.com/in/skyler-quinby-1016a9376/"
             target="_blank"
             rel="noopener noreferrer"
