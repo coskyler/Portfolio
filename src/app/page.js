@@ -167,6 +167,7 @@ export default function Page() {
             <ProjectCard 
               title="Fleet Control Dashboard" 
               video="/media/projectVids/fcd.mp4" 
+              poster="/media/projectVidPosters/fcd.png" 
               desc="A real-time dashboard for managing drone fleets, supporting live control, multi-user spectating, scan storage, and optimized 3D rendering."
               link="https://fleetcontrol.coskyler.com/scans/8"
               github="https://github.com/coskyler/Fleet-Control-Dashboard"
@@ -176,6 +177,7 @@ export default function Page() {
             <ProjectCard 
               title="Autonomous Indoor Drone Navigation" 
               video="/media/projectVids/aidn.mp4" 
+              poster="/media/projectVidPosters/aidn.png" 
               desc="Simulating a LiDAR-mounted drone that autonomously maps indoor spaces using frontier detection and custom pathfinding. Scans are streamed in real time to the Fleet Control Dashboard."
               github="https://github.com/coskyler/Autonomous-Indoor-Drone-Navigation"
               youtube="https://www.youtube.com/watch?v=1ApMZhoQgPc"
@@ -185,6 +187,7 @@ export default function Page() {
             <ProjectCard 
               title="MyContacts" 
               video="/media/projectVids/mycontacts.mp4" 
+              poster="/media/projectVidPosters/mycontacts.png" 
               desc="A team-built app for adding and organizing contacts. Designed to be simple, scalable, and well-suited for collaborative development."
               github="https://github.com/coskyler/MyContacts"
               link="https://mycontacts.coskyler.com"

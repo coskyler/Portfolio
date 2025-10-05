@@ -29,7 +29,7 @@ const tagList = {
 
 const cardColor = '#040404';
 
-export default function ProjectCard({ title, video, desc, link, youtube, github, tags }) {
+export default function ProjectCard({ title, video, poster, desc, link, youtube, github, tags }) {
   const videoRef = useRef(null);
   const pointRef = useRef(null);
 
@@ -81,7 +81,7 @@ export default function ProjectCard({ title, video, desc, link, youtube, github,
       </div>
 
       <div className="relative opacity-100">
-        <video src={video} ref={videoRef} className="inset-0 w-full h-full" muted loop/>
+        <video src={video} ref={videoRef} poster={poster} className="inset-0 w-full h-full" muted loop playsInline webkit-playsinline="true"/>
         <div className={`absolute top-0 w-full h-[5%] z-10`} style={{backgroundImage: `linear-gradient(to top, transparent, ${cardColor})`}}/>
         <div className={`absolute bottom-0 w-full h-[5%] z-10`} style={{backgroundImage: `linear-gradient(to bottom, transparent, ${cardColor})`}}/>
       </div>
