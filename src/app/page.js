@@ -9,7 +9,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDocker  } from "react-icons/si";
 import { DiJava, DiNodejsSmall, DiRedis, DiPostgresql, DiMysql  } from "react-icons/di";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 
 const skillLogos = [
   //frontend
@@ -35,6 +35,8 @@ const skillLogos = [
 export default function Page() {
   const [navHidden, setNavHidden] = useState(false);
   const lastY = useRef(0)
+
+  const threadsMemo = useMemo(() => <Threads/>, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -75,7 +77,7 @@ export default function Page() {
         </nav>
       </header>
 
-      <Threads/>
+      {threadsMemo}
       
       
       <main>
