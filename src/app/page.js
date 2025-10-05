@@ -1,103 +1,204 @@
+"use client"
+
+import ProjectCard from "@/components/projectcard";
+import Threads from "@/components/threads";
+import LogoLoop from "@/components/logoloop";
 import Image from "next/image";
+import { AiFillGithub } from "react-icons/ai";
+import { FaLinkedin } from "react-icons/fa";
+import { TbMailFilled } from "react-icons/tb";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDocker  } from "react-icons/si";
+import { DiJava, DiNodejsSmall, DiRedis, DiPostgresql, DiMysql  } from "react-icons/di";
+import { useRef, useState, useEffect } from "react";
 
-export default function Home() {
+const skillLogos = [
+  //frontend
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+
+  //backend
+  { node: <DiNodejsSmall />, title: "Node.js", href: "https://nodejs.org" },
+  { node: <DiRedis />, title: "Redis", href: "https://redis.io" },
+  { node: <DiPostgresql />, title: "PostgreSQL", href: "https://www.postgresql.org" },
+  { node: <DiMysql />, title: "MySQL", href: "https://www.mysql.com" },
+
+  //languages
+  { node: <DiJava />, title: "Java", href: "https://www.java.com" },
+  { node: <SiPython />, title: "Python", href: "https://www.python.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+
+  //environment
+  { node: <SiDocker />, title: "Docker", href: "https://www.docker.com" },
+];
+
+export default function Page() {
+  const [navHidden, setNavHidden] = useState(false);
+  const lastY = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setNavHidden(y > lastY.current && y > 50);
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <header 
+        className={`fixed top-0 left-0 w-full z-50 flex justify-center bg-gradient-to-b from-black via-black/90 to-transparent md:px-[10%] transition-transform duration-500 ${navHidden ? "-translate-y-full" : "translate-y-0"}`}
+      >
+        <nav className="w-full max-w-200 flex justify-center gap-3 px-6 md:rounded-full bg-black border border-neutral-800 md:my-4 items-center overflow-hidden">
+          <a href="#home" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Home</a>
+          <a href="#about" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">About</a>
+          <a href="#projects" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Projects</a>
+          <a href="#contact" className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Contact</a>
+          <a 
+            className='ml-auto hover:bg-neutral-200 hover:text-black transition h-full items-center flex px-1'
+            href="https://github.com/coskyler"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <AiFillGithub className="w-7 h-7"/>
+          </a>
+          <a 
+          className='hover:bg-neutral-200 hover:text-black transition h-full items-center flex px-1'
+            href="https://www.linkedin.com/in/skyler-quinby-1016a9376/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="w-7 h-7"/>
+          </a>
+        </nav>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <Threads/>
+      
+      
+      <main>
+        <section id='home' className='w-full h-screen flex flex-col items-center justify-center'>
+          <div className="-translate-y-10 font-bold max-w-[80%]">
+            <p className="text-md">Hi, I&#39;m</p>
+            <h1 className="text-[clamp(1rem,10vw,5.5rem)] mb-2">Skyler Quinby</h1>
+            <p className="text-lg font-semibold max-w-[clamp(20ch,80vw,50ch)]">CS student at UCF · Studying full-stack development with a focus on backend</p>
+          </div>
+
+        </section>
+
+        <section id='about' className='py-[clamp(2rem,15vw,10rem)] w-full flex items-center justify-center px-[10%]'>
+          <div className="relative max-w-[80vw] flex flex-col items-center justify-center">
+            
+            <div className="flex mb-36">
+              <div className='w-full max-w-[90ch] flex flex-col'>
+                <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>About Me</h2>
+                <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
+                <p className='text-lg leading-relaxed text-gray-200 mb-4'>
+                  I&apos;m a computer science student at the University of Central Florida with an interest in building full-stack applications. I focus mainly on backend development and enjoy learning how large systems process data at scale.
+                </p>
+                <p className='text-lg leading-relaxed text-gray-200'>
+                  I value working with others and enjoy the challenge of making complex systems work simply. Over time, I&apos;ve found that clear, purposeful code tends to stand the test of time. When I&apos;m not doing coursework, I&apos;m usually learning something new or exploring a new idea to build on.
+                </p>
+              </div>
+
+              <div className="relative aspect-[2/3] w-full max-w-[15rem] hidden lg:block ml-30 shadow-md shadow-white/50 rounded-lg overflow-hidden self-center">
+                <Image
+                  className="object-contain"
+                  src="/media/headshot.png"
+                  alt=""
+                  fill
+                />
+              </div>
+
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0">
+              <LogoLoop
+                logos={skillLogos}
+                speed={40}
+                direction="left"
+                logoHeight={48}
+                gap={40}
+                pauseOnHover
+                scaleOnHover
+                fadeOut
+                fadeOutColor="#000"
+                ariaLabel="Technology partners"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id='projects' className='py-[clamp(2rem,15vw,10rem)] w-full flex flex-col items-center justify-center px-[5%]'>
+          <div className='w-[80vw] max-w-[90rem]'>
+            <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>Selected Work</h2>
+            <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
+          </div>
+
+          <div className="w-full max-w-[90rem] grid gap-4 grid-cols-1 [@media(min-width:50rem)]:grid-cols-2 [@media(min-width:75rem)]:grid-cols-3">
+            <ProjectCard 
+              title="Fleet Control Dashboard" 
+              video="/media/projectVids/fcd.mp4" 
+              desc="A real-time dashboard for managing drone fleets, supporting live control, multi-user spectating, scan storage, and optimized 3D rendering."
+              link="https://fleetcontrol.coskyler.com/scans/8"
+              github="https://github.com/coskyler/Fleet-Control-Dashboard"
+              tags={['react', 'threejs', 'node', 'express', 'websockets', 'redis', 'postgresql', 'docker', 'nginx']}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+
+            <ProjectCard 
+              title="Autonomous Indoor Drone Navigation" 
+              video="/media/projectVids/aidn.mp4" 
+              desc="Simulating a LiDAR-mounted drone that autonomously maps indoor spaces using frontier detection and custom pathfinding. Scans are streamed in real time to the Fleet Control Dashboard."
+              github="https://github.com/coskyler/Autonomous-Indoor-Drone-Navigation"
+              youtube="https://www.youtube.com/watch?v=1ApMZhoQgPc"
+              tags={['unity', 'csharp', 'websockets']}
+            />
+
+            <ProjectCard 
+              title="MyContacts" 
+              video="/media/projectVids/mycontacts.mp4" 
+              desc="A team-built app for adding and organizing contacts. Designed to be simple, scalable, and well-suited for collaborative development."
+              github="https://github.com/coskyler/MyContacts"
+              link="https://mycontacts.coskyler.com"
+              tags={['apache', 'php', 'mysql', 'docker', 'nginx']}
+            />
+          </div>
+
+          <a 
+            className='text-lg text-white mt-16 flex hover:underline'
+            href="https://github.com/coskyler"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read our docs
+            <AiFillGithub className="w-7 h-7 mr-2"/>
+            More on my GitHub
           </a>
-        </div>
+
+        </section>
+
+        <section id='contact' className='pt-[clamp(2rem,15vw,10rem)] pb-[clamp(4rem,30vw,20rem)] w-full flex items-center justify-center px-[10%]'>
+          <div className='w-full max-w-[80ch] flex flex-col'>
+            <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>Let&apos;s Connect</h2>
+            <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
+            <p className='text-lg text-gray-200 mb-16'>Get in touch with me:</p>
+            <a href="https://www.linkedin.com/in/skyler-quinby-1016a9376/" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline mb-4 flex">
+              <FaLinkedin className="w-7 h-7 mr-2"/>
+              LinkedIn
+            </a>
+            <a href="mailto:skylerpquinby@gmail.com" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline mb-4 flex">
+              <TbMailFilled className="w-7 h-7 mr-2"/>
+              skylerpquinby@gmail.com
+            </a>
+          </div>
+        </section>
+
+        <footer className="py-6 text-center text-sm text-neutral-400 border-t border-neutral-700">
+          <p className="mb-2">© 2025 Skyler Quinby</p>
+          Built with <span className="font-semibold text-neutral-300">React</span> and <span className="font-semibold text-neutral-300">Next.js</span> · Deployed on <span className="font-semibold text-neutral-300">Vercel</span>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
