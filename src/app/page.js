@@ -71,19 +71,19 @@ export default function Page() {
       >
         <nav className="w-full max-w-200 flex justify-center gap-2 px-6 md:rounded-full bg-black border-b md:border border-neutral-800 md:my-4 items-center overflow-hidden">
           <button 
-            className='cursor-pointer hover:bg-neutral-200 hover:text-black py-2.5 mb-auto items-center flex px-1 md:hidden'
+            className='cursor-pointer hover:bg-neutral-200 hover:text-black h-12 mb-auto items-center flex px-1 md:hidden'
             onClick={() => setNavExpanded(!navExpanded)}
           >
             <AiOutlineMenu className={`w-7 h-7 transition-transform duration-300 ${navExpanded ? "rotate-90" : "rotate-0"}`} />
           </button>
           <div className={`flex md:gap-3 transition-[max-height] duration-500 overflow-hidden flex-col md:flex-row mb-auto ${navExpanded ? "max-h-64" : "max-h-0 md:max-h-none"}`}>
-            <a href="#home" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Home</a>
-            <a href="#about" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">About</a>
-            <a href="#projects" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Projects</a>
-            <a href="#contact" onClick={jump} className="px-2 py-2.5 hover:bg-neutral-200 hover:text-black transition">Contact</a>
+            <a href="#home" onClick={jump} className="shrink-0 flex items-center px-2 h-12 hover:bg-neutral-200 hover:text-black transition">Home</a>
+            <a href="#about" onClick={jump} className="shrink-0 flex items-center px-2 h-12 hover:bg-neutral-200 hover:text-black transition">About</a>
+            <a href="#projects" onClick={jump} className="shrink-0 flex items-center px-2 h-12 hover:bg-neutral-200 hover:text-black transition">Projects</a>
+            <a href="#contact" onClick={jump} className="shrink-0 flex items-center px-2 h-12 hover:bg-neutral-200 hover:text-black transition">Contact</a>
           </div>
           <a 
-            className='ml-auto hover:bg-neutral-200 hover:text-black transition py-2.5 mb-auto items-center flex px-1'
+            className='ml-auto hover:bg-neutral-200 hover:text-black transition h-12 mb-auto items-center flex px-1'
             href="https://github.com/coskyler"
             target="_blank"
             rel="noopener noreferrer"
@@ -91,7 +91,7 @@ export default function Page() {
             <AiFillGithub className="w-7 h-7"/>
           </a>
           <a 
-          className='hover:bg-neutral-200 hover:text-black transition py-2.5 mb-auto items-center flex px-1'
+          className='hover:bg-neutral-200 hover:text-black transition h-12 mb-auto items-center flex px-1'
             href="https://www.linkedin.com/in/skyler-quinby-1016a9376/"
             target="_blank"
             rel="noopener noreferrer"
