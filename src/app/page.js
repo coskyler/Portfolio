@@ -92,7 +92,7 @@ export default function Page() {
           </a>
           <a 
           className='hover:bg-neutral-200 hover:text-black transition h-12 mb-auto items-center flex px-1'
-            href="https://www.linkedin.com/in/skyler-quinby-1016a9376/"
+            href="https://www.linkedin.com/in/skyler-quinby/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -212,7 +212,7 @@ export default function Page() {
             <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>Let&apos;s Connect</h2>
             <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
             <p className='text-lg text-gray-200 mb-16'>Get in touch with me:</p>
-            <a href="https://www.linkedin.com/in/skyler-quinby-1016a9376/" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline mb-4 flex">
+            <a href="https://www.linkedin.com/in/skyler-quinby/" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline mb-4 flex">
               <FaLinkedin className="w-7 h-7 mr-2"/>
               LinkedIn
             </a>
