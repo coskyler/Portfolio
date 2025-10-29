@@ -24,6 +24,8 @@ const tagList = {
   csharp: <div key="csharp" className={"border-violet-400 text-violet-400" + tagProperties}>C#</div>,
   nginx: <div key="nginx" className={"border-lime-400 text-lime-400" + tagProperties}>Nginx</div>,
   apache: <div key="apache" className={"border-red-300 text-red-300" + tagProperties}>Apache</div>,
+  nextjs: <div key="nextjs" className={"border-gray-300 text-gray-300" + tagProperties}>Next.js</div>,
+  gemini: <div key="gemini" className={"border-emerald-400 text-emerald-400" + tagProperties}>Gemini</div>,
 };
 
 

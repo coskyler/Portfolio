@@ -185,6 +185,16 @@ export default function Page() {
             />
 
             <ProjectCard 
+              title="Chang'e Finance" 
+              video="/media/projectVids/chang-e.mp4" 
+              poster="/media/projectVidPosters/chang-e.png" 
+              desc="A full-stack paper trading web app that lets users simulate investing with real-time stock data and AI-driven financial analysis."
+              github="https://github.com/coskyler/Chang-e"
+              link="https://changefinance.coskyler.com"
+              tags={['nextjs', 'node', 'express', 'gemini', 'redis', 'postgresql', 'docker', 'nginx']}
+            />
+
+            <ProjectCard 
               title="MyContacts" 
               video="/media/projectVids/mycontacts.mp4" 
               poster="/media/projectVidPosters/mycontacts.png" 
