@@ -109,7 +109,7 @@ export default function Page() {
           <div className="-translate-y-10 font-bold max-w-[80%]">
             <p className="text-md">Hi, I&#39;m</p>
             <h1 className="text-[clamp(1rem,10vw,5.5rem)] mb-2">Skyler Quinby</h1>
-            <p className="text-lg font-semibold max-w-[clamp(20ch,80vw,50ch)]">CS student at UCF · Studying full-stack development with a focus on backend</p>
+            <p className="text-lg font-semibold max-w-[clamp(20ch,80vw,50ch)]">CS student at UCF · Studying full-stack development and system architecture</p>
           </div>
 
         </section>
