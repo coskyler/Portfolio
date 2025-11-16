@@ -35,10 +35,15 @@ export default function Threads() {
     let scrollPos = 0;
 
     const draw = () => {
+      scrollPos = window.scrollY * 0.5;
+      if(scrollPos > canvas.height) {
+        frame = requestAnimationFrame(draw);
+        return;
+      }
+
       const now = performance.now();
       const dt = (now - last) / 1000;
       last = now;
-      scrollPos = window.scrollY * 0.5;
 
       const w = canvas.width;
       const h = canvas.height;

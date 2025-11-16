@@ -165,13 +165,23 @@ export default function Page() {
 
           <div className="w-full max-w-[90rem] grid gap-4 grid-cols-1 [@media(min-width:50rem)]:grid-cols-2 [@media(min-width:75rem)]:grid-cols-3">
             <ProjectCard
+              title="Tourweaver"
+              video="/media/projectVids/tourweaver.mp4"
+              poster="/media/projectVidPosters/tourweaver.png"
+              desc="A tour-planning platform that uses a custom agent integrated with Google Maps to generate highly tailored routes from a user's location and natural language request."
+              link="https://tourweaver.coskyler.com"
+              github="https://github.com/coskyler/Tourweaver"
+              tags={['ai', 'nextjs', 'node', 'express', 'postgresql', 'docker', 'nginx']}
+            />
+
+            <ProjectCard
               title="Fleet Control Dashboard"
               video="/media/projectVids/fcd.mp4"
               poster="/media/projectVidPosters/fcd.png"
               desc="A real-time dashboard for managing drone fleets, supporting live control, multi-user spectating, scan storage, and optimized 3D rendering."
               link="https://fleetcontrol.coskyler.com/scans/8"
               github="https://github.com/coskyler/Fleet-Control-Dashboard"
-              tags={['react', 'threejs', 'node', 'express', 'websockets', 'redis', 'postgresql', 'docker', 'nginx']}
+              tags={['react', 'threejs', 'node', 'express', 'websockets', 'redis', 'streams', 'postgresql', 'docker', 'nginx']}
             />
 
             <ProjectCard
@@ -191,7 +201,7 @@ export default function Page() {
               desc="A full-stack paper trading web app that lets users simulate investing with real-time stock data and AI-driven financial analysis."
               github="https://github.com/coskyler/Chang-e"
               link="https://changefinance.coskyler.com"
-              tags={['nextjs', 'node', 'express', 'gemini', 'redis', 'postgresql', 'docker', 'nginx']}
+              tags={['ai', 'nextjs', 'node', 'express', 'redis', 'postgresql', 'docker', 'nginx']}
             />
 
             <ProjectCard

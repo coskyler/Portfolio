@@ -25,7 +25,8 @@ const tagList = {
   nginx: <div key="nginx" className={"border-lime-400 text-lime-400" + tagProperties}>Nginx</div>,
   apache: <div key="apache" className={"border-red-300 text-red-300" + tagProperties}>Apache</div>,
   nextjs: <div key="nextjs" className={"border-gray-300 text-gray-300" + tagProperties}>Next.js</div>,
-  gemini: <div key="gemini" className={"border-emerald-400 text-emerald-400" + tagProperties}>Gemini</div>,
+  ai: <div key="ai" className={"border-fuchsia-400 text-fuchsia-400" + tagProperties}>AI</div>,
+  streams: <div key="streams" className={"border-amber-400 text-amber-400" + tagProperties}>Streams</div>,
 };
 
 
@@ -83,7 +84,7 @@ export default function ProjectCard({ title, video, poster, desc, link, youtube,
       </div>
 
       <div className="relative opacity-100">
-        <video src={video} ref={videoRef} poster={poster} className="inset-0 w-full h-full" muted loop playsInline webkit-playsinline="true"/>
+        <video src={video} ref={videoRef} poster={poster} className="inset-0 w-full h-full object-cover" muted loop playsInline webkit-playsinline="true"/>
         <div className={`absolute top-0 w-full h-[5%] z-10`} style={{backgroundImage: `linear-gradient(to top, transparent, ${cardColor})`}}/>
         <div className={`absolute bottom-0 w-full h-[5%] z-10`} style={{backgroundImage: `linear-gradient(to bottom, transparent, ${cardColor})`}}/>
       </div>
