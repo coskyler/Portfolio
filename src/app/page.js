@@ -7,8 +7,8 @@ import Image from "next/image";
 import { AiFillGithub, AiOutlineMenu } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { TbMailFilled } from "react-icons/tb";
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDocker  } from "react-icons/si";
-import { DiJava, DiNodejsSmall, DiRedis, DiPostgresql, DiMysql  } from "react-icons/di";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiDocker } from "react-icons/si";
+import { DiJava, DiNodejsSmall, DiRedis, DiPostgresql, DiMysql } from "react-icons/di";
 import { useRef, useState, useEffect, useMemo } from "react";
 
 const skillLogos = [
@@ -40,13 +40,13 @@ export default function Page() {
 
   const [navExpanded, setNavExpanded] = useState(false);
 
-  const threadsMemo = useMemo(() => <Threads/>, []);
+  const threadsMemo = useMemo(() => <Threads />, []);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
 
-      if(jumping.current) {
+      if (jumping.current) {
         jumping.current = false;
       } else {
         setNavHidden(y > lastY.current && y > 50);
@@ -66,11 +66,11 @@ export default function Page() {
 
   return (
     <>
-      <header 
+      <header
         className={`fixed top-0 left-0 w-full z-50 flex justify-center bg-gradient-to-b from-black via-black/90 to-transparent md:px-[10%] transition-transform duration-500 ${navHidden ? "-translate-y-full" : "translate-y-0"}`}
       >
         <nav className="w-full max-w-200 flex justify-center gap-2 px-6 md:rounded-full bg-black border-b md:border border-neutral-800 md:my-4 items-center overflow-hidden">
-          <button 
+          <button
             className='cursor-pointer hover:bg-neutral-200 hover:text-black h-12 mb-auto items-center flex px-1 md:hidden'
             onClick={() => setNavExpanded(!navExpanded)}
           >
@@ -82,28 +82,28 @@ export default function Page() {
             <a href="#projects" onClick={jump} className="shrink-0 flex items-center px-2 h-12 hover:bg-neutral-200 hover:text-black transition">Projects</a>
             <a href="#contact" onClick={jump} className="shrink-0 flex items-center px-2 h-12 hover:bg-neutral-200 hover:text-black transition">Contact</a>
           </div>
-          <a 
+          <a
             className='ml-auto hover:bg-neutral-200 hover:text-black transition h-12 mb-auto items-center flex px-1'
             href="https://github.com/coskyler"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <AiFillGithub className="w-7 h-7"/>
+            <AiFillGithub className="w-7 h-7" />
           </a>
-          <a 
-          className='hover:bg-neutral-200 hover:text-black transition h-12 mb-auto items-center flex px-1'
+          <a
+            className='hover:bg-neutral-200 hover:text-black transition h-12 mb-auto items-center flex px-1'
             href="https://www.linkedin.com/in/skyler-quinby/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin className="w-7 h-7"/>
+            <FaLinkedin className="w-7 h-7" />
           </a>
         </nav>
       </header>
 
       {threadsMemo}
-      
-      
+
+
       <main>
         <section id='home' className='w-full h-screen flex flex-col items-center justify-center'>
           <div className="-translate-y-10 font-bold max-w-[80%]">
@@ -114,13 +114,13 @@ export default function Page() {
 
         </section>
 
-        <section id='about' className='py-[clamp(2rem,15vw,10rem)] w-full flex items-center justify-center px-[10%]'>
+        <section id='about' className='py-[clamp(6rem,15vw,10rem)] w-full flex items-center justify-center px-[10%]'>
           <div className="relative max-w-[80vw] flex flex-col items-center justify-center">
-            
-            <div className="flex mb-36">
+
+            <div className="flex mb-[clamp(6rem,16vw,9rem)]">
               <div className='w-full max-w-[90ch] flex flex-col'>
                 <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>About Me</h2>
-                <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
+                <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]" />
                 <p className='text-lg leading-relaxed text-gray-200 mb-4'>
                   I&apos;m a computer science student at the University of Central Florida with an interest in building full-stack applications. I focus mainly on backend development and enjoy learning how large systems process data at scale.
                 </p>
@@ -145,8 +145,8 @@ export default function Page() {
                 logos={skillLogos}
                 speed={40}
                 direction="left"
-                logoHeight={48}
-                gap={40}
+                logoHeight="clamp(2.2rem, 6vw, 3rem)"
+                gap="clamp(1.3rem, 3vw, 2rem)"
                 pauseOnHover
                 scaleOnHover
                 fadeOut
@@ -157,47 +157,47 @@ export default function Page() {
           </div>
         </section>
 
-        <section id='projects' className='py-[clamp(2rem,15vw,10rem)] w-full flex flex-col items-center justify-center px-[5%]'>
+        <section id='projects' className='py-[clamp(6rem,15vw,10rem)] w-full flex flex-col items-center justify-center px-[5%]'>
           <div className='w-[80vw] max-w-[90rem]'>
             <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>Selected Work</h2>
-            <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
+            <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]" />
           </div>
 
           <div className="w-full max-w-[90rem] grid gap-4 grid-cols-1 [@media(min-width:50rem)]:grid-cols-2 [@media(min-width:75rem)]:grid-cols-3">
-            <ProjectCard 
-              title="Fleet Control Dashboard" 
-              video="/media/projectVids/fcd.mp4" 
-              poster="/media/projectVidPosters/fcd.png" 
+            <ProjectCard
+              title="Fleet Control Dashboard"
+              video="/media/projectVids/fcd.mp4"
+              poster="/media/projectVidPosters/fcd.png"
               desc="A real-time dashboard for managing drone fleets, supporting live control, multi-user spectating, scan storage, and optimized 3D rendering."
               link="https://fleetcontrol.coskyler.com/scans/8"
               github="https://github.com/coskyler/Fleet-Control-Dashboard"
               tags={['react', 'threejs', 'node', 'express', 'websockets', 'redis', 'postgresql', 'docker', 'nginx']}
             />
 
-            <ProjectCard 
-              title="Autonomous Indoor Drone Navigation" 
-              video="/media/projectVids/aidn.mp4" 
-              poster="/media/projectVidPosters/aidn.png" 
+            <ProjectCard
+              title="Autonomous Indoor Drone Navigation"
+              video="/media/projectVids/aidn.mp4"
+              poster="/media/projectVidPosters/aidn.png"
               desc="Simulating a LiDAR-mounted drone that autonomously maps indoor spaces using frontier detection and custom pathfinding. Scans are streamed in real time to the Fleet Control Dashboard."
               github="https://github.com/coskyler/Autonomous-Indoor-Drone-Navigation"
               youtube="https://www.youtube.com/watch?v=1ApMZhoQgPc"
               tags={['unity', 'csharp', 'websockets']}
             />
 
-            <ProjectCard 
-              title="Chang'e Finance" 
-              video="/media/projectVids/chang-e.mp4" 
-              poster="/media/projectVidPosters/chang-e.png" 
+            <ProjectCard
+              title="Chang'e Finance"
+              video="/media/projectVids/chang-e.mp4"
+              poster="/media/projectVidPosters/chang-e.png"
               desc="A full-stack paper trading web app that lets users simulate investing with real-time stock data and AI-driven financial analysis."
               github="https://github.com/coskyler/Chang-e"
               link="https://changefinance.coskyler.com"
               tags={['nextjs', 'node', 'express', 'gemini', 'redis', 'postgresql', 'docker', 'nginx']}
             />
 
-            <ProjectCard 
-              title="MyContacts" 
-              video="/media/projectVids/mycontacts.mp4" 
-              poster="/media/projectVidPosters/mycontacts.png" 
+            <ProjectCard
+              title="MyContacts"
+              video="/media/projectVids/mycontacts.mp4"
+              poster="/media/projectVidPosters/mycontacts.png"
               desc="A team-built app for adding and organizing contacts. Designed to be simple, scalable, and well-suited for collaborative development."
               github="https://github.com/coskyler/MyContacts"
               link="https://mycontacts.coskyler.com"
@@ -205,29 +205,29 @@ export default function Page() {
             />
           </div>
 
-          <a 
+          <a
             className='text-lg text-white mt-16 flex hover:underline'
             href="https://github.com/coskyler"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <AiFillGithub className="w-7 h-7 mr-2"/>
+            <AiFillGithub className="w-7 h-7 mr-2" />
             More on my GitHub
           </a>
 
         </section>
 
-        <section id='contact' className='pt-[clamp(2rem,15vw,10rem)] pb-[clamp(4rem,30vw,20rem)] w-full flex items-center justify-center px-[10%]'>
+        <section id='contact' className='pt-[clamp(6rem,15vw,10rem)] pb-[clamp(4rem,30vw,20rem)] w-full flex items-center justify-center px-[10%]'>
           <div className='w-full max-w-[80ch] flex flex-col'>
             <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>Let&apos;s Connect</h2>
-            <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]"/>
+            <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]" />
             <p className='text-lg text-gray-200 mb-16'>Get in touch with me:</p>
             <a href="https://www.linkedin.com/in/skyler-quinby/" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline mb-4 flex">
-              <FaLinkedin className="w-7 h-7 mr-2"/>
+              <FaLinkedin className="w-7 h-7 mr-2" />
               LinkedIn
             </a>
             <a href="mailto:skylerpquinby@gmail.com" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline mb-4 flex">
-              <TbMailFilled className="w-7 h-7 mr-2"/>
+              <TbMailFilled className="w-7 h-7 mr-2" />
               skylerpquinby@gmail.com
             </a>
           </div>

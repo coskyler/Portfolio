@@ -38,6 +38,7 @@ export default function Threads() {
       const now = performance.now();
       const dt = (now - last) / 1000;
       last = now;
+      scrollPos = window.scrollY * 0.5;
 
       const w = canvas.width;
       const h = canvas.height;
@@ -67,7 +68,7 @@ export default function Threads() {
           if (x === 0)
             ctx.moveTo(x, y);
           else
-            ctx.lineTo(x, y);
+            ctx.lineTo(x, y - scrollPos);
         }
 
         ctx.strokeStyle = `rgba(200, 200, 200, ${1 - (i / numThreads)})`;
@@ -96,18 +97,10 @@ export default function Threads() {
 
     window.addEventListener('resize', onResize);
 
-    const onScroll = () => {
-      scrollPos = window.scrollY * 0.5;
-      canvas.style.transform = `translateY(${-scrollPos}px)`;
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('resize', onResize);
-      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('mousemove', onMouseMove);
     };
   }, [noise]);
