@@ -168,7 +168,7 @@ export default function Page() {
               title="Tourweaver"
               video="/media/projectVids/tourweaver.mp4"
               poster="/media/projectVidPosters/tourweaver.png"
-              desc="A tour-planning platform that uses a custom Gemini-powered agent integrated with Google Places and Google Maps to generate highly tailored itineraries from a user’s natural-language request."
+              desc="A tour-planning platform that uses a custom agent integrated with Google Places and Google Maps to generate highly tailored itineraries from a user’s natural-language request."
               link="https://tourweaver.coskyler.com"
               github="https://github.com/coskyler/Tourweaver"
               tags={['ai', 'nextjs', 'node', 'express', 'postgresql', 'docker', 'nginx']}
