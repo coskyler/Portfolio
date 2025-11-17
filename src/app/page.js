@@ -168,7 +168,7 @@ export default function Page() {
               title="Tourweaver"
               video="/media/projectVids/tourweaver.mp4"
               poster="/media/projectVidPosters/tourweaver.png"
-              desc="A tour-planning platform that uses a custom agent integrated with Google Maps to generate highly tailored routes from a user's location and natural language request."
+              desc="A tour-planning platform that uses a custom Gemini-powered agent integrated with Google Places and Google Maps to generate highly tailored itineraries from a user’s natural-language request."
               link="https://tourweaver.coskyler.com"
               github="https://github.com/coskyler/Tourweaver"
               tags={['ai', 'nextjs', 'node', 'express', 'postgresql', 'docker', 'nginx']}
@@ -205,6 +205,16 @@ export default function Page() {
             />
 
             <ProjectCard
+              title="shortcak.es"
+              video="/media/projectVids/shortcakes.mp4"
+              poster="/media/projectVidPosters/shortcakes.png"
+              desc="An analytics-focused, modern URL shortener with fast redirects and a comprehensive dashboard."
+              link="https://shortcak.es/"
+              github="https://github.com/coskyler/shortcak.es"
+              tags={['react', 'node', 'express', 'mongodb', 'docker', 'nginx']}
+            />
+
+            <ProjectCard
               title="MyContacts"
               video="/media/projectVids/mycontacts.mp4"
               poster="/media/projectVidPosters/mycontacts.png"
@@ -227,7 +237,7 @@ export default function Page() {
 
         </section>
 
-        <section id='contact' className='pt-[clamp(6rem,15vw,10rem)] pb-[clamp(4rem,30vw,20rem)] w-full flex items-center justify-center px-[10%]'>
+        <section id='contact' className='pt-[clamp(6rem,15vw,10rem)] pb-[clamp(12rem,30vw,20rem)] w-full flex items-center justify-center px-[10%]'>
           <div className='w-full max-w-[80ch] flex flex-col'>
             <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>Let&apos;s Connect</h2>
             <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]" />

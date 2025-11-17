@@ -27,6 +27,7 @@ const tagList = {
   nextjs: <div key="nextjs" className={"border-gray-300 text-gray-300" + tagProperties}>Next.js</div>,
   ai: <div key="ai" className={"border-fuchsia-400 text-fuchsia-400" + tagProperties}>AI</div>,
   streams: <div key="streams" className={"border-amber-400 text-amber-400" + tagProperties}>Streams</div>,
+  mongodb: <div key="mongodb" className={"border-green-500 text-green-500" + tagProperties}>MongoDB</div>,
 };
 
 
