@@ -37,6 +37,8 @@ export default function Threads() {
     const draw = () => {
       scrollPos = window.scrollY * 0.5;
       if(scrollPos > canvas.height) {
+        ctx.fillStyle = "rgba(0,0,0,.3)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         frame = requestAnimationFrame(draw);
         return;
       }
