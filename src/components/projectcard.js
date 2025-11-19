@@ -1,7 +1,7 @@
 "use client";
 
 import { AiOutlineLink, AiFillGithub, AiFillYoutube } from "react-icons/ai";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 const tagProperties = " text-sm rounded-md px-2 border"
@@ -41,12 +41,63 @@ export default function ProjectCard({ title, video, poster, desc, link, youtube,
   const [pointY, setPointY] = useState(0);
   const [pointOpacity, setPointOpacity] = useState(0);
 
+  const isPlaying = (v) =>
+    !!(
+      v.currentTime > 0 &&
+      !v.paused &&
+      !v.ended &&
+      v.readyState >= 3
+    );
+
+
+  const pauseVid = (v) => {
+    if(!isPlaying(v)) return;
+
+    v.pause();
+    requestAnimationFrame(() => {
+      v.currentTime = 0;
+    });
+  };
+
+  const playVid = (v) => {
+    if(isPlaying(v)) return;
+
+    v.play();
+  }
+
+  const oneCol = () => !window.matchMedia("(min-width: 50rem)").matches;
+
+  useEffect(() => {
+    let entry = null;
+
+    const checkAutoplay = () => {
+      if (entry.intersectionRatio === 1 && oneCol()) {
+        playVid(videoRef.current);
+      } else {
+        pauseVid(videoRef.current);
+      }
+    }
+    const observer = new IntersectionObserver(([e]) => {
+      entry = e;
+      checkAutoplay();
+    }, { threshold: 1 });
+    observer.observe(videoRef.current);
+
+    const onResize = () => checkAutoplay();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
   return (
-    <div 
+    <div
       className={`relative flex flex-col w-full bg-[#040404] shadow-md shadow-white/20 rounded-lg border border-neutral-800 overflow-hidden`}
       onMouseEnter={() => {
         setPointOpacity(.05);
-        videoRef.current?.play();
+        if (!oneCol()) playVid(videoRef.current);
       }}
       onMouseLeave={() => {
         setPointOpacity(0);
@@ -54,14 +105,10 @@ export default function ProjectCard({ title, video, poster, desc, link, youtube,
         const v = videoRef.current;
         if (!v) return;
 
-        v.pause();
-
-        requestAnimationFrame(() => {
-          v.currentTime = 0;
-        });
+        if (!oneCol()) pauseVid(v);
       }}
       onMouseMove={(e) => {
-        if(!pointRef.current) return;
+        if (!pointRef.current) return;
 
         const rect = e.currentTarget.getBoundingClientRect(); // this div’s rect
         setPointX(e.clientX - rect.left);
@@ -85,22 +132,22 @@ export default function ProjectCard({ title, video, poster, desc, link, youtube,
       </div>
 
       <div className="relative opacity-100">
-        <video src={video} ref={videoRef} poster={poster} className="inset-0 w-full h-full object-cover" muted loop playsInline webkit-playsinline="true"/>
-        <div className={`absolute top-0 w-full h-[5%] z-10`} style={{backgroundImage: `linear-gradient(to top, transparent, ${cardColor})`}}/>
-        <div className={`absolute bottom-0 w-full h-[5%] z-10`} style={{backgroundImage: `linear-gradient(to bottom, transparent, ${cardColor})`}}/>
+        <video src={video} ref={videoRef} poster={poster} className="inset-0 w-full h-full object-cover" muted loop playsInline webkit-playsinline="true" />
+        <div className={`absolute top-0 w-full h-[5%] z-10`} style={{ backgroundImage: `linear-gradient(to top, transparent, ${cardColor})` }} />
+        <div className={`absolute bottom-0 w-full h-[5%] z-10`} style={{ backgroundImage: `linear-gradient(to bottom, transparent, ${cardColor})` }} />
       </div>
 
       <h2 className="text-md mx-6 py-4 mb-auto">{desc}</h2>
 
       <div className="flex gap-2 mt-3 ml-auto m-4">
         <a href={link} target="_blank" rel="noopener noreferrer" className={`${link ? "" : "hidden"}`}>
-          <AiOutlineLink className="w-7 h-7"/>
+          <AiOutlineLink className="w-7 h-7" />
         </a>
         <a href={youtube} target="_blank" rel="noopener noreferrer" className={`${youtube ? "" : "hidden"}`}>
-          <AiFillYoutube className="w-7 h-7"/>
+          <AiFillYoutube className="w-7 h-7" />
         </a>
         <a href={github} target="_blank" rel="noopener noreferrer" className={`${github ? "" : "hidden"}`}>
-          <AiFillGithub className="w-7 h-7"/>
+          <AiFillGithub className="w-7 h-7" />
         </a>
       </div>
     </div>
