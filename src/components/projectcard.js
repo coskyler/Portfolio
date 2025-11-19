@@ -90,6 +90,7 @@ export default function ProjectCard({ title, video, poster, desc, link, youtube,
       observer.disconnect()
       window.removeEventListener("resize", onResize);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
