@@ -121,6 +121,15 @@ export default function Page() {
               <div className='w-full max-w-[90ch] flex flex-col'>
                 <h2 className='text-[clamp(1.5rem,8vw,4rem)] font-bold'>About Me</h2>
                 <div className="h-1 bg-gradient-to-r from-white to-transparent mb-6 w-[75%]" />
+                <div className="relative w-40 h-40 block lg:hidden shadow-md shadow-white/50 rounded-full overflow-hidden self-center mt-4 mb-8">
+                  <Image
+                    className="object-cover scale-125 object-[50%_10%] translate-x-2"
+                    src="/media/headshot.png"
+                    alt=""
+                    fill
+                  />
+                </div>
+
                 <p className='text-lg leading-relaxed text-gray-200 mb-4'>
                   I&apos;m a computer science student at the University of Central Florida with an interest in building full-stack applications. I focus mainly on backend development and enjoy learning how large systems process data at scale.
                 </p>
