@@ -132,8 +132,8 @@ export default function ProjectCard({ title, video, poster, desc, link, youtube,
         ))}
       </div>
 
-      <div className="relative opacity-100">
-        <video src={video} ref={videoRef} poster={poster} className="inset-0 w-full h-full object-cover" muted loop playsInline webkit-playsinline="true" />
+      <div className="relative opacity-100" style={{ backgroundImage: `url(${poster})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <video src={video} ref={videoRef} className="inset-0 w-full h-full object-cover" muted loop playsInline webkit-playsinline="true" />
         <div className={`absolute top-0 w-full h-[5%] z-10`} style={{ backgroundImage: `linear-gradient(to top, transparent, ${cardColor})` }} />
         <div className={`absolute bottom-0 w-full h-[5%] z-10`} style={{ backgroundImage: `linear-gradient(to bottom, transparent, ${cardColor})` }} />
       </div>
