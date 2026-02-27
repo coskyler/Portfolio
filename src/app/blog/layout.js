@@ -1,7 +1,7 @@
 export default function BlogLayout({ children }) {
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <div className="mx-auto max-w-3xl px-6 py-16">
+      <div className="mx-auto max-w-3xl px-4 py-16">
         <article
           className="
             prose prose-invert prose-lg max-w-none
