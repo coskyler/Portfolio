@@ -22,6 +22,7 @@ export default function BlogLayout({ children }) {
             prose-strong:text-zinc-100
             prose-h1:mb-4
             prose-h2:mb-3
+            prose-h3:mb-2
           "
         >
           {children}

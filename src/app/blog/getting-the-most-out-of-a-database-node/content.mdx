@@ -9,7 +9,7 @@ A database’s bottleneck almost never comes from the amount of data it stores. 
 
 Databases store data on disk in fixed-size pages using data structures like B-trees, and they cache the pages they are actively using in memory. At any given moment, a database only needs to interact with a small subset of its pages. This subset, called the working set, is what should fit into memory for the database to perform well. A database with even trillions of rows can be hosted on a lightweight computer (given enough disk space) if its working set is small enough. For example, an app might have a large user base, but the working set would only consist of pages for currently active users.
 
-<Image src={img} alt="Working set vs buffer pool" />
+<Image src={img} alt="Working set vs buffer pool" className="mx-auto max-w-xl"/>
 
 The reserved pool of memory for page caches is called the buffer pool. If the working set is even slightly larger than the buffer pool, the database will quickly become bottlenecked by disk I/O. A disk read (cache miss) takes roughly 100–1000× longer than a memory read (cache hit). So, even if 90% of the working set fits in the buffer pool, the remaining cache misses can slow down the database dramatically. This is why databases aim to keep the entire working set in memory: even a small rate of cache misses will overwhelm performance.
 
